@@ -28,26 +28,44 @@ user_demographics_headers = ["UserIndex", "Age", "Gender", "Location", "Familiar
 species_matchups = ["UserIndex", "SpeciesA", "SpeciesB", "Winner", "TimeTaken"]
 species_scores = ["Species", "TotalMatchups", "Wins", "Losses"]
 
+users_list = ["user1", "user2", "user3"]
+
+
 # (Edited Tutorial Code) Defines users route, permites GET and POST methods
 @app.route("/api/users", methods=['GET', 'POST'])
 
 # Main FUNCTIONS ////////////////////////////////////////
 
-# saving data 
-def save_user_demographics(row): # where row is a list
-    with open(user_demographics, 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(row)
+# test
+def users():
+    if request.method == "POST":
+        data = request.get_json()
+        new_user = data.get("user")
 
-def save_species_matchups(row):
-    with open(species_matchups, 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(row)
+        if not new_user:
+            return jsonify({"error": "Missing 'user' field"}), 400
 
-def save_species_scores(row):
-    with open(species_scores, 'a', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow(row)
+        users_list.append(new_user)
+        return jsonify({"message": "User added", "users": users_list}), 201
+
+    # GET request
+    return jsonify({"users": users_list})
+
+# # saving data 
+# def save_user_demographics(row): # where row is a list
+#     with open(user_demographics, 'a', newline='') as file:
+#         writer = csv.writer(file)
+#         writer.writerow(row)
+
+# def save_species_matchups(row):
+#     with open(species_matchups, 'a', newline='') as file:
+#         writer = csv.writer(file)
+#         writer.writerow(row)
+
+# def save_species_scores(row):
+#     with open(species_scores, 'a', newline='') as file:
+#         writer = csv.writer(file)
+#         writer.writerow(row)
 
 
 # fetch data from backend - work in prog
