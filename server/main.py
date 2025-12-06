@@ -12,6 +12,9 @@ CORS = CORS(app, origins='*') # set to accept all origins
 
 # Local Variables -----------------------------------------
 
+# paths for csv data collection
+
+
 users_list = ["arpan", "zack", "jessie"]
 
 
