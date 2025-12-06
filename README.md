@@ -5,6 +5,8 @@ To run this project locally:
 
 Clone this repository. To view full project, both react frontend and flask backend must be running.
 
+////FRONTEND////////////////////////////////////////////////////////////////////////
+
 To set up frontend server:
 - Open terminal
 
@@ -14,6 +16,8 @@ Commands:
 - npm run dev
 
 Keep the terminal that you opened the frontend into open. 
+
+////BACKEND////////////////////////////////////////////////////////////////////////
 
 To setup backend server: 
 - Open another terminal (again, don't close frontend terminal!!)
