@@ -22,9 +22,9 @@ function App() {
   const addUser = async () => {
     if (!newUser.trim()) return;
 
-    await axios.post("http://localhost:8080/api/users", {
+    await axios.post("http://localhost:8080/api/users"), {
       user: newUser
-    });
+    }
 
     setNewUser("") // clears input for new user
     fetchAPI(); // reloads the newly updated list
@@ -56,16 +56,12 @@ function App() {
         <button onClick={addUser}>
           Add User
         </button>
-
         {array.map((user, index) => (
           <div key={index}>
             <span>{user}</span><br></br>
           </div>
         ))}
       </div >
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
